@@ -1,0 +1,1 @@
+Django. Template for a site with authorization.
