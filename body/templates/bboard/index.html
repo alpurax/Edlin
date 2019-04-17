@@ -1,0 +1,12 @@
+{% extends "layout/base.html" %}
+{% block content %}
+{% for bb in bbs %}
+    <div class="{% cycle 'col' 'col' 'col last' as curclass %}">
+        <h3>{{ bb.title }}</h2>
+        <p> {{ bb.content }}</p>
+        <p><a href="{% url 'by_rubric' bb.rubric.pk %}"> {{ bb.rubric.name }}</a></p>
+        <p> {{ bb.published|date:"d.m.Y H:i:s" }}</p>
+		<p>&not; <a href="#">read more</a></p>
+    </div>    
+{% endfor %}
+{% endblock %}

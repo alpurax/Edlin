@@ -1,0 +1,10 @@
+{% extends "layout/base.html"%}
+{% block title%}Lобавление объявления{% endblock %}
+{% block content %}
+    <h2>Lобавление объявления</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Добавить">
+    </form>
+{% endblock %}
