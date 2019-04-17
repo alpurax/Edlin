@@ -10,6 +10,6 @@ class Post(models.Model):
 
     class Meta:
         verbose_name_plural = 'Заголовки постов'
-        verbose_name = 'Заголовок'
+        verbose_name = 'Пост'
         ordering = ['-published']
 

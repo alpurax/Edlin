@@ -13,24 +13,28 @@
 <div id="mainmenu">
 	<h1>Кладовка айтишника.</h1>	
 	<div class="stat">
-	[localhost]# Здесь все периодически глючит и не работает. Это площадка для экспериментов. <br/>
-	[localhost]# Тут находится всякий мусор, не интересный большинству в интернете.<br/>
-	[localhost]# 
+	{% if user.is_authenticated %}
+		[localhost]~# Добро пожаловать, <a href="#">{{user.username}}</a>.<br/>
+		[localhost]~#<a href="{% url 'logout' %}">&rarr;logout</a>		
+	{% else %}
+		[localhost]~>Здесь все периодически глючит и не работает. Это площадка для экспериментов. <br/>
+		[localhost]~> Тут находится всякий мусор, не интересный большинству в интернете.<br/>		
+		[localhost]~><a href="{% url 'login' %}">&rarr;login</a>
+	{% endif%}
 	<p>
 	</div>	
 	<hr size=1px width=100%>
 	<ul id="menu">
-		<li><a href="{% url 'index' %}">Главная</a></li>
-		<li><a href="{% url 'add' %}">Добавить</a></li>
-		<li>{% for rubric in rubrics %}
-            <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-            {% endfor %}        
-        </li>
-		<li><a href="#">How-To</a></li>
+		<li><a href="#">Главная</a></li>					
 		<li><a href="#">Фото</a></li>
 		<li><a href="#">About</a></li>
 	</ul>
 	<hr size=1px width=100%>
+	{% if user.is_authenticated %}	
+	<ul id="menu">
+		<li><a href="#">Добавить</a></li>							
+	</ul>	
+	{% endif%}
 </div>
 <div id="content">
     {% block content %}
